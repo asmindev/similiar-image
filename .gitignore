@@ -1,4 +1,5 @@
 feature_vec.joblib
 xception_model.pkl
 dawi
-data
+dataset-image
+__pycache__
