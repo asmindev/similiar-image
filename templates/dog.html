@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html class="h-full">
+    <head>
+        <title>Menampilkan Gambar</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="w-full bg-gray-100">
+        <main class="w-full">
+            <div class="my-12 text-center">
+                <h1 class="text-3xl font-bold mb-8">Menampilkan Gambar</h1>
+            </div>
+            <div class="w-10/12 mx-auto">
+                <div class="mx-auto w-2/3">
+                    <img
+                        src="{{dog_name['url']}}"
+                        alt="{{ dog_name['name']}}"
+                        class="image w-full object-cover rounded-md cursor-pointer"
+                    />
+                </div>
+                <div class="mx-auto w-2/3 my-4">
+                    <div class="similiar grid grid-cols-3 gap-4"></div>
+                </div>
+                <!-- <div class="similiar w-full grid grid-cols-3"></div> -->
+            </div>
+        </main>
+
+        <script>
+            const image = document.querySelector(".image");
+            console.log(image.alt);
+            const getSimilar = async () => {
+                const response = await fetch("/similarity", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        image: image.alt,
+                    }),
+                });
+                const data = await response.json();
+                const similar = data.data
+                    .map((item) => {
+                        return `
+                            <img
+                                src="/${item.url}"
+                                alt="${item.name}"
+                                class="image w-full object-cover rounded-md cursor-pointer"
+                            />
+                        `;
+                    })
+                    .join("");
+                document.querySelector(".similiar").innerHTML = similar;
+            };
+            getSimilar();
+        </script>
+    </body>
+</html>

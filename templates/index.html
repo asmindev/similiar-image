@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="h-full">
+    <head>
+        <title>Menampilkan Gambar</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="w-full flex flex-col">
+        <div class="w-full md:w-2/3 mx-auto">
+            <h1 class="text-2xl font-bold mt-12 mb-8 text-center">
+                Image Gallery
+            </h1>
+
+            <div class="columns-2 md:columns-3 gap-4">
+                {% for image_name in images %}
+                <a href="/dog/{{ image_name['name'] }}">
+                    <div class="p-4">
+                        <img
+                            src="{{ image_name['url'] }}"
+                            alt="Image"
+                            class="w-full h-auto"
+                        />
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <script>
+            const images = document.querySelectorAll(".images");
+            // select when image is clicked
+            images.forEach((image) => {
+                image.addEventListener("click", () => {
+                    // remove all active class
+                    images.forEach((image) => {
+                        image.classList.remove("border-4");
+                        image.classList.remove("border-blue-500");
+                    });
+                    // add active class
+                    image.classList.add("border-4");
+                    image.classList.add("border-blue-500");
+                });
+            });
+        </script>
+    </body>
+</html>
