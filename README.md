@@ -45,14 +45,14 @@ Kelas `ImageSearch` menangani ekstraksi fitur gambar dan pencarian kesamaan meng
 5. **Pencarian dan Dapatkan Hasil:** Metode `search_and_get_results` memanfaatkan fungsionalitas pencarian gambar dan mengembalikan daftar jalur gambar yang mirip.
 
 ## Penggunaan
+1. Siapkan dataset gambar, lalu simpan didalam folder static/img/dataset-image
+2. Instal pustaka yang dibutuhkan dengan menggunakan `pip install -r requirements.txt` (asumsikan file `requirements.txt` disediakan).
 
-1. Instal pustaka yang dibutuhkan dengan menggunakan `pip install -r requirements.txt` (asumsikan file `requirements.txt` disediakan).
+3. Jalankan aplikasi Flask dengan menjalankan skrip utama: `python main.py`.
 
-2. Jalankan aplikasi Flask dengan menjalankan skrip utama: `python main.py`.
+4. Akses aplikasi melalui browser web di `http://localhost:5000`.
 
-3. Akses aplikasi melalui browser web di `http://localhost:5000`.
-
-4. Unggah gambar menggunakan antarmuka dan amati gambar yang mirip dalam hasil pencarian.
+5. Unggah gambar menggunakan antarmuka dan amati gambar yang mirip dalam hasil pencarian.
 
 ## Kesimpulan
 
